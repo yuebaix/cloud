@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jufan</groupId>
+    <artifactId>cloud</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Dalston.SR3</spring-cloud.version>
+        <boot.test.version>1.5.7.RELEASE</boot.test.version>
+    </properties>
+
+    <!-- 设定插件仓库, 如有Nexus私服, 取消注释并指向正确的服务器地址. -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>central</name>
+            <!-- 配置仓库的地址 -->
+            <url>http://svn.jufandev.com:8087/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <modules>
+        <module>parent</module>
+        <module>center</module>
+        <module>config</module>
+        <module>provider</module>
+        <module>facade</module>
+        <module>consumer</module>
+    </modules>
+</project>
