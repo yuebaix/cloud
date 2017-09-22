@@ -19,3 +19,4 @@ public class CloudConsumerApp {
 		SpringApplication.run(CloudConsumerApp.class, args);
 	}
 }
+

@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${boot.test.version}</version>
+            <version>${boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -32,4 +32,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${boot.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

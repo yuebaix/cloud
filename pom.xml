@@ -13,7 +13,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.SR3</spring-cloud.version>
-        <boot.test.version>1.5.7.RELEASE</boot.test.version>
+        <boot.version>1.5.7.RELEASE</boot.version>
     </properties>
 
     <!-- 设定插件仓库, 如有Nexus私服, 取消注释并指向正确的服务器地址. -->

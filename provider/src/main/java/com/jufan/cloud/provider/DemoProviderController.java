@@ -26,6 +26,6 @@ public class DemoProviderController {
 
 	@RequestMapping("/")
 	public String sayhello() {
-		return "hello";
+		return "demo-provider";
 	}
 }
