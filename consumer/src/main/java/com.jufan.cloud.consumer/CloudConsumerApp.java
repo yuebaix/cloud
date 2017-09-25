@@ -2,11 +2,10 @@ package com.jufan.cloud.consumer;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableEurekaClient
+//@EnableEurekaClient
 @EnableFeignClients
 public class CloudConsumerApp {
 //	@Bean
