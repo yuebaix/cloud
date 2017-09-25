@@ -1,4 +1,4 @@
-package com.jufan.cloud.consumer.facade;
+package com.jufan.cloud.facade;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
