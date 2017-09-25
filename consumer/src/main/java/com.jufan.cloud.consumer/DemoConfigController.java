@@ -1,11 +1,12 @@
 package com.jufan.cloud.consumer;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DemoConfigController {
-//	@Value("${whoisthis}")
+	@Value("${whoisthis}")
 	private String whoisthis;
 
 	public String getWhoisthis() {
