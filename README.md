@@ -69,6 +69,8 @@ http://localhost:10300/show/demo-consumer
 <br>
 http://localhost:10300/whoisthis
 <br>
+java -jar consumer-1.0-SNAPSHOT.jar --jerry.activeprofile=multi &
+<br>
 <br>
 <br>
 <br>
