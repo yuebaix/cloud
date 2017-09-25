@@ -21,14 +21,26 @@ http://localhost:10101
 java -jar center-1.0-SNAPSHOT.jar --spring.profiles.active=center2 &
 <br>
 http://localhost:10102
-<br>
 
 config
 ----------
 依赖center
 
-http://localhost:10199/demo-consumer/env
+default
 <br>
+http://localhost:10197/demo-consumer/env
+<br>
+java -jar config-1.0-SNAPSHOT.jar --jerry.activeprofile=multi0 &
+<br>
+http://localhost:10197/demo-consumer/env
+<br>
+java -jar config-1.0-SNAPSHOT.jar --jerry.activeprofile=multi1 &
+<br>
+http://localhost:10198/demo-consumer/env
+<br>
+java -jar config-1.0-SNAPSHOT.jar --jerry.activeprofile=multi2 &
+<br>
+http://localhost:10199/demo-consumer/env
 
 provider
 ----------
@@ -37,6 +49,8 @@ provider
 http://localhost:10200
 <br>
 http://localhost:10200/service-instances/demo-provider
+<br>
+java -jar provider-1.0-SNAPSHOT.jar --jerry.activeprofile=multi &
 <br>
 
 consumer
