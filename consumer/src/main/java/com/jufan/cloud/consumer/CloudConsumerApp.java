@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients
+@EnableFeignClients("com.jufan.cloud.facade")
 public class CloudConsumerApp {
 //	@Bean
 //	@LoadBalanced
@@ -19,4 +19,3 @@ public class CloudConsumerApp {
 		new SpringApplicationBuilder(CloudConsumerApp.class).web(true).run(args);
 	}
 }
-

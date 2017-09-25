@@ -1,6 +1,6 @@
 package com.jufan.cloud.consumer;
 
-import com.jufan.cloud.consumer.facade.DemoService;
+import com.jufan.cloud.facade.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
