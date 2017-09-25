@@ -1,12 +1,26 @@
 jufan cloud
 =====
+<a href="http://www.juxiangfen.com"><img width="100" height="50" src="http://www.juxiangfen.com/prd/images/logo.png"><br>
 [Jufan Co.Ltd](http://www.juxiangfen.com/)
 
 center
 ----------
+
+default
+<br>
 http://localhost:10100
 <br>
+java -jar center-1.0-SNAPSHOT.jar --spring.profiles.active=center0 &
 <br>
+http://localhost:10100
+<br>
+java -jar center-1.0-SNAPSHOT.jar --spring.profiles.active=center1 &
+<br>
+http://localhost:10101
+<br>
+java -jar center-1.0-SNAPSHOT.jar --spring.profiles.active=center2 &
+<br>
+http://localhost:10102
 <br>
 
 config
