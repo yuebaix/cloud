@@ -3,14 +3,14 @@ jufan cloud
 <a href="http://www.juxiangfen.com"><img width="100" height="50" src="http://www.juxiangfen.com/prd/images/logo.png"><br>
 [Jufan Co.Ltd](http://www.juxiangfen.com/)
 
-hosts
+`hosts`
 -
     #本地服务器配置
     127.0.0.1 center0.jufandev.com
     127.0.0.1 center1.jufandev.com
     127.0.0.1 center2.jufandev.com
     
-center
+`center`
 -
     default
     http://localhost:10100
@@ -21,7 +21,7 @@ center
     java -jar center-1.0-SNAPSHOT.jar --jerry.activeprofile=multi2 &
     http://localhost:10102
     
-config
+`config`
 -
     depend on center
     default
@@ -33,14 +33,14 @@ config
     java -jar config-1.0-SNAPSHOT.jar --jerry.activeprofile=multi2 &
     http://localhost:10199/demo-consumer/env
 
-provider
+`provider`
 -
     depend on center
     http://localhost:10200
     http://localhost:10200/service-instances/demo-provider
     java -jar provider-1.0-SNAPSHOT.jar --jerry.activeprofile=multi &
 
-consumer
+`consumer`
 -
     depend on provider,config
     
