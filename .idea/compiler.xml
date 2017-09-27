@@ -10,6 +10,7 @@
         <module name="config" />
         <module name="consumer" />
         <module name="facade" />
+        <module name="gateway" />
         <module name="provider" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
       <module name="config" target="1.8" />
       <module name="consumer" target="1.8" />
       <module name="facade" target="1.8" />
+      <module name="gateway" target="1.8" />
       <module name="parent" target="1.8" />
       <module name="provider" target="1.8" />
       <module name="service" target="1.8" />
