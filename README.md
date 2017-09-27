@@ -94,6 +94,7 @@ jufan cloud
 
 > cloud-status-page:
 >> http://localhost:10100
+
 > monitor-page:
 >> http://localhost:10099/hystrix
         <br>
