@@ -68,7 +68,6 @@ jufan cloud
 -
     depend on center,provider
     
-    http://localhost:10200/service-instances/demo-provider
     java -jar gateway-1.0-SNAPSHOT.jar --jerry.activeprofile=multi &
     java -jar gateway-1.0-SNAPSHOT.jar --server.port=20000 &
     java -jar gateway-1.0-SNAPSHOT.jar --jerry.activeprofile=multi --server.port=20000 &
