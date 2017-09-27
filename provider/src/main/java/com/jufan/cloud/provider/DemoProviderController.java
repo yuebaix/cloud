@@ -1,6 +1,7 @@
 package com.jufan.cloud.provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,9 @@ import java.util.List;
 
 @RestController
 public class DemoProviderController {
+	@Value("${server.port}")
+	private String port;
+
 	@Autowired
 	private DiscoveryClient discoveryClient;
 
@@ -26,6 +30,6 @@ public class DemoProviderController {
 
 	@RequestMapping("/")
 	public String sayhello() {
-		return "demo-provider";
+		return "b-demo-provider : " + port;
 	}
 }

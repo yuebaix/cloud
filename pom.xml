@@ -56,5 +56,8 @@
         <module>provider</module>
         <module>facade</module>
         <module>consumer</module>
+        <module>gateway</module>
+        <module>sso</module>
+        <module>monitor</module>
     </modules>
 </project>
