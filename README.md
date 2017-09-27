@@ -5,7 +5,7 @@ jufan cloud
 
 `hosts`
 -
-    #本地服务器配置
+    #localserver hosts settings
     127.0.0.1 center0.jufandev.com
     127.0.0.1 center1.jufandev.com
     127.0.0.1 center2.jufandev.com
@@ -27,6 +27,7 @@ jufan cloud
 `config`
 -
     depend on center
+    
     default
     http://localhost:10199/demo-consumer/env
     java -jar config-1.0-SNAPSHOT.jar --jerry.activeprofile=multi0 &
@@ -39,10 +40,14 @@ jufan cloud
 `provider`
 -
     depend on center
+    
     http://localhost:10200
     http://localhost:10200/service-instances/demo-provider
     java -jar provider-1.0-SNAPSHOT.jar --jerry.activeprofile=multi &
-
+    java -jar provider-1.0-SNAPSHOT.jar --server.port=10200 &
+    java -jar provider-1.0-SNAPSHOT.jar --server.port=10201 &
+    java -jar provider-1.0-SNAPSHOT.jar --jerry.activeprofile=multi --server.port=10200 &
+    
 `consumer`
 -
     depend on provider,config
@@ -58,3 +63,15 @@ jufan cloud
     http://localhost:10300/hystrix.stream
     http://localhost:10300/get/2
     http://localhost:10300/show
+
+`gateway`
+-
+    depend on center,provider
+    
+    http://localhost:10200/service-instances/demo-provider
+    java -jar gateway-1.0-SNAPSHOT.jar --jerry.activeprofile=multi &
+    java -jar gateway-1.0-SNAPSHOT.jar --server.port=20000 &
+    java -jar gateway-1.0-SNAPSHOT.jar --jerry.activeprofile=multi --server.port=20000 &
+    http://localhost:20000/singleton
+    http://localhost:20000/multi
+    
