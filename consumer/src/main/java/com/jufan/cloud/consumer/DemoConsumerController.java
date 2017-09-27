@@ -13,14 +13,14 @@ public class DemoConsumerController {
 
 	@RequestMapping("/")
 	public String sayhello() {
-		return "demo-consumer";
+		return "c-demo-consumer";
 	}
 
 	@RequestMapping("/show")
 	public String show() {
 		System.err.println("err");
 
-		return demoService.show("demo-consumer");
+		return demoService.show("c-demo-consumer");
 	}
 
 	@RequestMapping("/show/{appName}")

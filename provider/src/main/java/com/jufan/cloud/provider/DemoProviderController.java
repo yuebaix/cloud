@@ -30,6 +30,6 @@ public class DemoProviderController {
 
 	@RequestMapping("/")
 	public String sayhello() {
-		return "demo-provider : " + port;
+		return "b-demo-provider : " + port;
 	}
 }

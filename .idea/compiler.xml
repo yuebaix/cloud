@@ -11,7 +11,9 @@
         <module name="consumer" />
         <module name="facade" />
         <module name="gateway" />
+        <module name="monitor" />
         <module name="provider" />
+        <module name="sso" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,9 +23,11 @@
       <module name="consumer" target="1.8" />
       <module name="facade" target="1.8" />
       <module name="gateway" target="1.8" />
+      <module name="monitor" target="1.8" />
       <module name="parent" target="1.8" />
       <module name="provider" target="1.8" />
       <module name="service" target="1.8" />
+      <module name="sso" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
