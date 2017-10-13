@@ -13,10 +13,6 @@
     <groupId>com.jufan.cloud</groupId>
     <artifactId>gateway</artifactId>
 
-    <properties>
-        <jackson-databind.version>2.9.1</jackson-databind.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
