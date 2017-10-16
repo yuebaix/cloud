@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		http
 //				// 所有请求都得经过认证和授权
 //				.antMatcher("/**").authorizeRequests().anyRequest().authenticated()
-//				.and().authorizeRequests().antMatchers("/","/sso/login","/sso/oauth/token").permitAll()
+//				.and().authorizeRequests().antMatchers("/","/sso/login","/sso/oauth/token", "/oauth/authorize").permitAll()
 //				// 这里之所以要禁用csrf，是为了方便。
 //				// 否则，退出链接必须要发送一个post请求，请求还得带csrf token
 //				// 那样还得写一个界面，发送post请求
@@ -22,12 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.logout().logoutUrl("/sso/logout").permitAll().logoutSuccessUrl("/sso/login");
 
 		http
-				.authorizeRequests()
-					.antMatchers("/","/sso/login","/sso/oauth/token").permitAll()
-					.anyRequest().authenticated()
-					.and()
-				.csrf().disable()
-					.formLogin().loginPage("/sso/login").permitAll()
-					.and().logout().logoutUrl("/sso/logout").logoutSuccessUrl("/sso/login").permitAll();
+				.csrf().disable();
+
+//		http
+//				.authorizeRequests()
+//					.antMatchers("/").permitAll()
+//					.anyRequest().authenticated()
+//					.and()
+//				.csrf().disable()
+//					.formLogin().loginPage("/sso/login").permitAll()
+//					.and().logout().logoutUrl("/sso/logout").logoutSuccessUrl("/sso/login").permitAll();
 	}
 }

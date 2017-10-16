@@ -1,0 +1,84 @@
+-- 建表
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for sys_authority
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_authority`;
+CREATE TABLE `sys_authority` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `created_date` tinyblob NOT NULL,
+  `last_modified_by` varchar(50) DEFAULT NULL,
+  `last_modified_date` tinyblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for sys_role
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `created_date` tinyblob NOT NULL,
+  `last_modified_by` varchar(50) DEFAULT NULL,
+  `last_modified_date` tinyblob,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for sys_role_authorities
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role_authorities`;
+CREATE TABLE `sys_role_authorities` (
+  `sys_role_id` bigint(20) NOT NULL,
+  `authorities_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`sys_role_id`,`authorities_id`),
+  KEY `FK9oc88v6ini6fjy2spcb8d63no` (`authorities_id`),
+  CONSTRAINT `FK9oc88v6ini6fjy2spcb8d63no` FOREIGN KEY (`authorities_id`) REFERENCES `sys_authority` (`id`),
+  CONSTRAINT `FKscivyriuji1w3sgrcpeqo5jdd` FOREIGN KEY (`sys_role_id`) REFERENCES `sys_role` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for sys_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `image_url` varchar(256) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `password` varchar(60) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `created_date` tinyblob NOT NULL,
+  `last_modified_by` varchar(50) DEFAULT NULL,
+  `last_modified_date` tinyblob,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_51bvuyvihefoh4kp5syh2jpi4` (`username`),
+  UNIQUE KEY `UK_ahtq5ew3v0kt1n7hf1sgp7p8l` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for sys_user_roles
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user_roles`;
+CREATE TABLE `sys_user_roles` (
+  `sys_user_id` bigint(20) NOT NULL,
+  `roles_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`sys_user_id`,`roles_id`),
+  KEY `FKdpvc6d7xqpqr43dfuk1s27cqh` (`roles_id`),
+  CONSTRAINT `FKd0ut7sloes191bygyf7a3pk52` FOREIGN KEY (`sys_user_id`) REFERENCES `sys_user` (`id`),
+  CONSTRAINT `FKdpvc6d7xqpqr43dfuk1s27cqh` FOREIGN KEY (`roles_id`) REFERENCES `sys_role` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+SET FOREIGN_KEY_CHECKS=1;
+
+-- 插入记录
+
