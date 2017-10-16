@@ -25,3 +25,5 @@ config | eureka client,config server > *singleton and multi-instance*
 provider | eureka client > *service-provider*
 consumer | eureka client,hystrix,hystrix dashboard > *service-consumer*
 gateway | zuul > *cloud gatway and routes*
+sso | Oauth2 > *auth center*
+app | springboot app
