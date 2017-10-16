@@ -1,4 +1,17 @@
--- 建表
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localtest
+Source Server Version : 50637
+Source Host           : localhost:3306
+Source Database       : cloud_sso
+
+Target Server Type    : MYSQL
+Target Server Version : 50637
+File Encoding         : 65001
+
+Date: 2017-10-16 20:02:06
+*/
 
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -15,7 +28,12 @@ CREATE TABLE `sys_authority` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_date` tinyblob,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_authority
+-- ----------------------------
+INSERT INTO `sys_authority` VALUES ('1', '测试权限', 'test', 'mocker', 0xACED00057372000D6A6176612E74696D652E536572955D84BA1B2248B20C00007870770D020000000059DEF6A236C6D3C078, null, 0xACED00057372000D6A6176612E74696D652E536572955D84BA1B2248B20C00007870770D020000000059DEF6A236C6D3C078);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -30,7 +48,12 @@ CREATE TABLE `sys_role` (
   `last_modified_by` varchar(50) DEFAULT NULL,
   `last_modified_date` tinyblob,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_role
+-- ----------------------------
+INSERT INTO `sys_role` VALUES ('1', '管理员', 'admin', 'mocker', 0xACED00057372000D6A6176612E74696D652E536572955D84BA1B2248B20C00007870770D020000000059DEF6A23408EC4078, null, 0xACED00057372000D6A6176612E74696D652E536572955D84BA1B2248B20C00007870770D020000000059DEF6A23408EC4078);
 
 -- ----------------------------
 -- Table structure for sys_role_authorities
@@ -44,6 +67,11 @@ CREATE TABLE `sys_role_authorities` (
   CONSTRAINT `FK9oc88v6ini6fjy2spcb8d63no` FOREIGN KEY (`authorities_id`) REFERENCES `sys_authority` (`id`),
   CONSTRAINT `FKscivyriuji1w3sgrcpeqo5jdd` FOREIGN KEY (`sys_role_id`) REFERENCES `sys_role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_role_authorities
+-- ----------------------------
+INSERT INTO `sys_role_authorities` VALUES ('1', '1');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -64,7 +92,12 @@ CREATE TABLE `sys_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_51bvuyvihefoh4kp5syh2jpi4` (`username`),
   UNIQUE KEY `UK_ahtq5ew3v0kt1n7hf1sgp7p8l` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_user
+-- ----------------------------
+INSERT INTO `sys_user` VALUES ('1', 'huifumanlove@gmail.com', 'root', 'anonymous', 'anonymous', '$2a$10$D7GyWBL34McU.tQwOGmbruluKRLfdagx8UY/kJXZieIzqSY1lu7O6', 'mocker', 'mocker', 0xACED00057372000D6A6176612E74696D652E536572955D84BA1B2248B20C00007870770D020000000059DEF6A2256E850078, null, 0xACED00057372000D6A6176612E74696D652E536572955D84BA1B2248B20C00007870770D020000000059DEF6A2256E850078);
 
 -- ----------------------------
 -- Table structure for sys_user_roles
@@ -78,7 +111,9 @@ CREATE TABLE `sys_user_roles` (
   CONSTRAINT `FKd0ut7sloes191bygyf7a3pk52` FOREIGN KEY (`sys_user_id`) REFERENCES `sys_user` (`id`),
   CONSTRAINT `FKdpvc6d7xqpqr43dfuk1s27cqh` FOREIGN KEY (`roles_id`) REFERENCES `sys_role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_user_roles
+-- ----------------------------
+INSERT INTO `sys_user_roles` VALUES ('1', '1');
 SET FOREIGN_KEY_CHECKS=1;
-
--- 插入记录
-
