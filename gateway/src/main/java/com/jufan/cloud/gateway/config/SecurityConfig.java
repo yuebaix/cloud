@@ -10,27 +10,43 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-//		http
-//				// 所有请求都得经过认证和授权
-//				.antMatcher("/**").authorizeRequests().anyRequest().authenticated()
-//				.and().authorizeRequests().antMatchers("/","/sso/login","/sso/oauth/token", "/oauth/authorize").permitAll()
-//				// 这里之所以要禁用csrf，是为了方便。
-//				// 否则，退出链接必须要发送一个post请求，请求还得带csrf token
-//				// 那样还得写一个界面，发送post请求
-//				.and().csrf().disable()
-//				// 退出的URL是/logout,退出后跳转到/login
-//				.logout().logoutUrl("/sso/logout").permitAll().logoutSuccessUrl("/sso/login");
-
 		http
+				// 所有请求都得经过认证和授权
+				.antMatcher("/**").authorizeRequests()
+				.antMatchers("/sso/oauth/token", "/sso/oauth/authorize").permitAll()
+				.anyRequest().authenticated()
+				.and()
 				.csrf().disable();
-
-//		http
-//				.authorizeRequests()
-//					.antMatchers("/").permitAll()
-//					.anyRequest().authenticated()
-//					.and()
-//				.csrf().disable()
-//					.formLogin().loginPage("/sso/login").permitAll()
-//					.and().logout().logoutUrl("/sso/logout").logoutSuccessUrl("/sso/login").permitAll();
+//				.and().csrf()
+//				.csrfTokenRepository(csrfTokenRepository())
+//				.and()
+//				.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
+//				.logout().logoutUrl("/sso/logout").permitAll()
+//				.logoutSuccessUrl("/");
 	}
+
+//	private Filter csrfHeaderFilter() {
+//		return new OncePerRequestFilter() {
+//			@Override
+//			protected void doFilterInternal(HttpServletRequest request,
+//			                                HttpServletResponse response, FilterChain filterChain)
+//					throws ServletException, IOException {
+//				CsrfToken csrf = (CsrfToken) request
+//						.getAttribute(CsrfToken.class.getName());
+//				if (csrf != null) {
+//					Cookie cookie = new Cookie("XSRF-TOKEN",
+//							csrf.getToken());
+//					cookie.setPath("/");
+//					response.addCookie(cookie);
+//				}
+//				filterChain.doFilter(request, response);
+//			}
+//		};
+//	}
+//
+//	private CsrfTokenRepository csrfTokenRepository() {
+//		HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+//		repository.setHeaderName("X-XSRF-TOKEN");
+//		return repository;
+//	}
 }

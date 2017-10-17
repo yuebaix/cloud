@@ -13,21 +13,52 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http
+//				.csrf()
+//				.csrfTokenRepository(csrfTokenRepository())
+//				.and()
+//				.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
 				.csrf().disable()
 				.exceptionHandling()
 				.authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 				.and()
-				.authorizeRequests()
+				.authorizeRequests().antMatchers("/", "/home", "/oauth/token", "/oauth/authorize").permitAll()
 				.anyRequest().authenticated()
 				.and()
+//				.formLogin()
+//				.loginPage("/login")
+//				.failureForwardUrl("/login?error")
+//				.permitAll()
+//				.and()
+//				.logout()
+//				.logoutUrl("/logout")
+//				.logoutSuccessUrl("/login?logout")
+//				.permitAll()
+//				.and()
 				.httpBasic();
-//		http
-//				.authorizeRequests()
-//					.antMatchers("/login","/oauth/token").permitAll()
-//					.anyRequest().authenticated()
-//					.and()
-//				.csrf().disable()
-//					.formLogin().loginPage("/login").permitAll()
-//					.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();
 	}
+
+//	private Filter csrfHeaderFilter() {
+//		return new OncePerRequestFilter() {
+//			@Override
+//			protected void doFilterInternal(HttpServletRequest request,
+//			                                HttpServletResponse response, FilterChain filterChain)
+//					throws ServletException, IOException {
+//				CsrfToken csrf = (CsrfToken) request
+//						.getAttribute(CsrfToken.class.getName());
+//				if (csrf != null) {
+//					Cookie cookie = new Cookie("XSRF-TOKEN",
+//							csrf.getToken());
+//					cookie.setPath("/");
+//					response.addCookie(cookie);
+//				}
+//				filterChain.doFilter(request, response);
+//			}
+//		};
+//	}
+
+//	private CsrfTokenRepository csrfTokenRepository() {
+//		HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+//		repository.setHeaderName("X-XSRF-TOKEN");
+//		return repository;
+//	}
 }
