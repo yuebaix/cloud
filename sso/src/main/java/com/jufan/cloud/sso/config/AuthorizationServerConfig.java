@@ -23,15 +23,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-
 	@Bean
-	public RedisTokenStore tokenStore() {
-		return new RedisTokenStore(connectionFactory);
+	public RedisTokenStore tokenStore() {//TODO 设置序列化策略
+		RedisTokenStore redisTokenStore = new RedisTokenStore(connectionFactory);
+		redisTokenStore.setPrefix("cloud:cloud_sso:");
+		return redisTokenStore;
 	}
 
 
 	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {//TODO 添加自定义clientDetailService
 		endpoints
 				.authenticationManager(authenticationManager)
 				.userDetailsService(userDetailsService)//若无，refresh_token会有UserDetailsService is required错误
@@ -39,11 +40,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	}
 
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {//TODO 添加token验证代码
 		security
 				.tokenKeyAccess("permitAll()")
 				.checkTokenAccess("isAuthenticated()");
 	}
+//	@Override
+//	public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+//		oauthServer.tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_TRUSTED_CLIENT')").checkTokenAccess(
+//				"hasAuthority('ROLE_TRUSTED_CLIENT')");
+//	}
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
