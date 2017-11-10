@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'echo $MVN_HOME'
+                sh 'mvn -v'
             }
         }
     }
